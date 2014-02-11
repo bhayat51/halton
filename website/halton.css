@@ -1,8 +1,39 @@
-body {
-	margin-top: 55px; <!-- Top margin -->
-}
+
+/* Navigation */
 .navbar {
-  	box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
+	background-color: #1D5FA3;
+  	box-shadow: inset 0 -2px 5px rgba(0,0,0,0.25);
+  	border: 0; /* This looks weird on mobiles */
+}
+.navbar a {
+	color: white !important;
+}
+.navbar .navbar-nav .active a {
+	background-color: #173154;
+}
+.navbar .navbar-nav .active a:hover {
+	background-color: #173154 !important;
+}
+.navbar .navbar-nav a {
+	background-color: #21477A;
+}
+.navbar .navbar-nav a:hover {
+	background-color: #21477A !important;
+}
+
+html {
+	background-color: #ddd;
+}
+body {
+	background-color: transparent;
+	margin-top: 60px; /* Top margin */
+}
+.main {
 }
 .content {
+	background: white;
+}
+.links {
+	background: white;
+	padding: 0;
 }
