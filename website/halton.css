@@ -4,7 +4,6 @@
 	background-color: #222;
 	border-color: #1D5FA3;
 	border: 0 0 20px 0;
-	width: 65%;
 	margin: 10px auto 0 auto;
 	border-radius: 3px;
 }
@@ -21,7 +20,7 @@
 	background-color: #21477A;
 }
 .navbar .navbar-nav a:hover {
-	background-color: #21477A !important;
+	background-color: #173154 !important;
 }
 .navbar-collapse {
 	border: 0;
@@ -35,10 +34,8 @@
 }
 
 html {
-	height: 100%;
-
 	background: url('img/bg.png');
-	background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(20, 20, 40, 0.3)), url('img/bg.png'); /* Subtle blue gradient FIXME looks odd when scrolling down */
+	background: linear-gradient(rgba(20, 20, 40, 0.5), rgba(20, 20, 40, 0.65)), url('img/bg.png'); /* Subtle blue gradient FIXME looks odd when scrolling down */
 }
 body {
 	background-color: transparent;
