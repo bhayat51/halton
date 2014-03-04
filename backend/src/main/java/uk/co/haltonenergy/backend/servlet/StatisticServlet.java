@@ -7,8 +7,8 @@ import uk.co.haltonenergy.backend.db.Objectifier.DatabaseObjectType;
 import uk.co.haltonenergy.backend.db.model.Statistic;
 
 public class StatisticServlet extends JsonServlet<Statistic> {
-    public StatisticServlet(BackendServer srv, String pathSpec) {
-        super(srv, pathSpec);
+    public StatisticServlet(BackendServer srv) {
+        super(srv, "/statistics/*");
     }
 
     @Override

@@ -11,7 +11,7 @@ import uk.co.haltonenergy.backend.db.model.Appliance;
  * @author Joshua Prendergast
  */
 public class ApplianceServlet extends JsonServlet<Appliance> {
-    public ApplianceServlet(BackendServer srv, String pathSpec) {
+    public ApplianceServlet(BackendServer srv) {
         super(srv, "/appliances/*");
     }
 
