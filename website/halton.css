@@ -36,6 +36,7 @@
 html {
 	background: url('img/bg.png');
 	background: linear-gradient(rgba(20, 20, 40, 0.5), rgba(20, 20, 40, 0.65)), url('img/bg.png'); /* Subtle blue gradient FIXME looks odd when scrolling down */
+	height: 100%; /* Hack to make the background fit the entire page. Looks bad when scrolling. */
 }
 body {
 	background-color: transparent;
