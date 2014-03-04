@@ -18,6 +18,8 @@ CREATE TABLE statistic (
 CREATE TABLE appliance (
     appliance_id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL,
+    pathspec VARCHAR(50),
+    imageurl VARCHAR(250),
     description VARCHAR(256),
     latitude DECIMAL(10, 8),
     longitude DECIMAL(11, 8),
