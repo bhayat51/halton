@@ -26,6 +26,10 @@ public abstract class JsonServlet<T> extends BaseServlet {
     
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        handleRequest(req, resp); // Use GET by default
+    }
+    
+    public void handleRequest(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         try {
             T dataObject = loadDataObject(req);
             if (dataObject != null) {

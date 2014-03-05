@@ -24,7 +24,7 @@ public abstract class BaseServlet extends HttpServlet {
      * @param req the HTTP request
      * @return the REST call arguments
      */
-    public String[] getArguments(HttpServletRequest req) {
+    public String[] getURIArguments(HttpServletRequest req) {
         return Util.getRequestArguments(getPathSpec(), req);
     }
     

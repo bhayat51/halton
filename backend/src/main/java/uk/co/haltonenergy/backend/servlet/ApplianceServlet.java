@@ -3,7 +3,6 @@ package uk.co.haltonenergy.backend.servlet;
 import javax.servlet.http.HttpServletRequest;
 
 import uk.co.haltonenergy.backend.BackendServer;
-import uk.co.haltonenergy.backend.db.Objectifier.DatabaseObjectType;
 import uk.co.haltonenergy.backend.db.model.Appliance;
 
 /**
@@ -17,11 +16,11 @@ public class ApplianceServlet extends JsonServlet<Appliance> {
 
     @Override
     public Appliance loadDataObject(HttpServletRequest req) throws Exception {
-        String[] args = getArguments(req);
-        if (args.length != 0) {
+        String[] args = getURIArguments(req);
+        if (args.length != 1) {
             throw new IllegalArgumentException();
         } else {
-            return (Appliance) getServer().getDataSource().queryObject(args[0], DatabaseObjectType.APPLIANCE);
+            return getServer().getDataSource().queryAppliance(args[0]);
         }
     }
 }
