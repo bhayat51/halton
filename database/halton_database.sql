@@ -2,7 +2,7 @@
 # Creates the Halton Energy database
 # Run with mysql -u [user] -p -vvv < schema.sql
 
-# DROP DATABASE IF EXISTS halton_energy; # Uncomment to replace existing databases (dangerous)
+DROP DATABASE IF EXISTS halton_energy; # Uncomment to replace existing databases (dangerous)
 CREATE DATABASE halton_energy;
 USE halton_energy;
 
@@ -16,9 +16,8 @@ CREATE TABLE statistic (
 );
 
 CREATE TABLE appliance (
-    appliance_id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+    appliance_id VARCHAR(255) NOT NULL,
     name VARCHAR(50) NOT NULL,
-    pathspec VARCHAR(50),
     imageurl VARCHAR(250),
     description VARCHAR(256),
     latitude DECIMAL(10, 8),
@@ -26,12 +25,12 @@ CREATE TABLE appliance (
     PRIMARY KEY(appliance_id)
 );
 
-CREATE TABLE usage (
-    usage_id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-    appliance_id INTEGER UNSIGNED NOT NULL,
+CREATE TABLE uses (
+    use_id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+    appliance_id VARCHAR(255) NOT NULL,
     name VARCHAR(50),
     description VARCHAR(256),
     used INTEGER UNSIGNED NOT NULL,
-    PRIMARY KEY(usage_id),
+    PRIMARY KEY(use_id),
     FOREIGN KEY(appliance_id) REFERENCES appliance(appliance_id)
 );
