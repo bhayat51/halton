@@ -40,7 +40,7 @@ public abstract class JsonServlet<T> extends BaseServlet {
                     writer.write(json);
                 }
             } else {
-                resp.sendError(HttpServletResponse.SC_NOT_FOUND);
+                resp.sendError(HttpServletResponse.SC_NO_CONTENT);
             }
         } catch (TimeoutException e) {
             resp.sendError(HttpServletResponse.SC_GATEWAY_TIMEOUT);

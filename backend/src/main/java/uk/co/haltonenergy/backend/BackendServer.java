@@ -1,5 +1,7 @@
 package uk.co.haltonenergy.backend;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -24,15 +26,13 @@ import uk.co.haltonenergy.backend.servlet.BaseServlet;
  * @author Joshua Prendergast
  */
 public class BackendServer {
-    private static final String PATHSPEC_PREFIX = "/api";
-    
     private Server srv;
     private DataSource ds;
     private Gson json;
     private int port;
     private ServletContextHandler ctx;
     
-    public BackendServer(int port) {
+    public BackendServer(int port) throws IOException, ConfigurationException {
         this.port = port;
         this.srv = new Server(port);
         
@@ -42,10 +42,14 @@ public class BackendServer {
         
         // Setup request logger
         SimpleDateFormat format = new SimpleDateFormat("dd_MM_yyyy");
-        NCSARequestLog requestLog = new NCSARequestLog("./logs/" + format.format(new Date()) + ".request.log");
+        NCSARequestLog requestLog = new NCSARequestLog("./logs/" + format.format(new Date()) + "requests.log");
         requestLog.setExtended(true);
         requestLog.setLogTimeZone("GMT");
         requestLog.setRetainDays(7);
+        
+        File logs = new File("./logs");
+        if (!logs.exists() && !logs.mkdir())
+            throw new IOException();
         
         RequestLogHandler logHandler = new RequestLogHandler();
         logHandler.setRequestLog(requestLog);
@@ -59,7 +63,7 @@ public class BackendServer {
         try {
             ds = new DataSource(new PropertiesConfiguration("db.properties"));
             ds.connect();
-        } catch (ClassNotFoundException | ConfigurationException e) {
+        } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
         

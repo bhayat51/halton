@@ -2,9 +2,16 @@ package uk.co.haltonenergy.backend;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.Priority;
+import org.apache.log4j.PropertyConfigurator;
 
 public class Log {
     public static Logger logger = Logger.getRootLogger();
+    
+    public static void configure() {
+        if (System.getProperty("log4j.configuration") == null) {
+            PropertyConfigurator.configure("./log4j.properties");
+        }
+    }
 
     public static void debug(Object message, Throwable t) {
         logger.debug(message, t);
