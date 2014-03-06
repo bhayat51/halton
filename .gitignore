@@ -31,4 +31,4 @@ proguard/
 
 ignore/
 lib/
-/backend/target/classes
+/backend/target/
