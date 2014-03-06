@@ -9,16 +9,16 @@ import uk.co.haltonenergy.backend.db.model.Usage;
 
 public class UsageServlet extends JsonServlet<List<Usage>> {
     public UsageServlet(BackendServer srv) {
-        super(srv, "/usages/*");
+        super(srv, "/usages/*", 1);
     }
 
     @Override
     public List<Usage> loadDataObject(HttpServletRequest req) throws Exception {
         String[] args = getURIArguments(req);
-        if (args.length != 1) {
-            throw new IllegalArgumentException();
-        } else {
+        try {
             return getServer().getDataSource().queryUsages(args[0]);
+        } catch (IndexOutOfBoundsException e) {
+            throw new IllegalArgumentException("Invalid argument count: expected 1, got " + args.length);
         }
     }
 }

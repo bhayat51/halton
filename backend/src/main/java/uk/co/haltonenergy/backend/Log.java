@@ -5,7 +5,11 @@ import org.apache.log4j.Priority;
 import org.apache.log4j.PropertyConfigurator;
 
 public class Log {
-    public static Logger logger = Logger.getRootLogger();
+    public static Logger logger = Logger.getLogger("HaltonServer");
+    
+    static {
+        Log.configure();
+    }
     
     public static void configure() {
         if (System.getProperty("log4j.configuration") == null) {

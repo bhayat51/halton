@@ -50,7 +50,7 @@ public class DataSource {
     }
     
     public void connect() {
-        Log.debug("Connecting to datasource (user = " + config.getString("User") + "url = " + config.getString("Url"));
+        Log.info("Connecting to datasource (user = '" + config.getString("User") + "', url = '" + config.getString("Url") + "')");
         
         // Setup the pooled connector
         source = new ComboPooledDataSource();
@@ -95,7 +95,7 @@ public class DataSource {
                     ResultSet rs = ps.executeQuery();
                     
                     if (rs.next()) {
-                        return new Appliance(rs.getString("name"), rs.getString("description"), rs.getString("imageurl"), rs.getDouble("latitude"), rs.getDouble("longitude"));
+                        return new Appliance(rs.getString("name"), rs.getString("description"), rs.getString("model"), rs.getString("size"), rs.getString("consumption"), rs.getString("annualconsumption"), rs.getString("imageurl"), rs.getDouble("latitude"), rs.getDouble("longitude"));
                     } else {
                         return null; // None found
                     }
@@ -164,7 +164,7 @@ public class DataSource {
             @Override
             public List<Statistic> call() throws Exception {
                 try (Connection conn = source.getConnection();
-                        PreparedStatement ps = conn.prepareStatement("SELECT * FROM statistic WHERE start >= ? AND end <= ?")) {
+                        PreparedStatement ps = conn.prepareStatement("SELECT * FROM statistic WHERE start >= ? AND end < ?")) {
                     ps.setDate(1, start);
                     ps.setDate(2, end);
                     ResultSet rs = ps.executeQuery();

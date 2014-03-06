@@ -75,6 +75,7 @@ public class BackendServer {
     }
     
     public void start() throws Exception {
+        Log.info("Starting listening on port " + port);
         srv.start();
     }
     

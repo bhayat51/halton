@@ -7,6 +7,7 @@
   
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.build.timestamp.format>dd/MM/yyyy, HH:mm:ss</maven.build.timestamp.format>
   </properties>
   
   <build>
@@ -31,6 +32,9 @@
               <classpathPrefix>lib/</classpathPrefix>
               <mainClass>uk.co.haltonenergy.backend.Program</mainClass>
             </manifest>
+            <manifestEntries>
+                <BuiltOn>${maven.build.timestamp}</BuiltOn>
+            </manifestEntries>
           </archive>
         </configuration>
       </plugin>
@@ -86,6 +90,16 @@
 		<groupId>log4j</groupId>
 		<artifactId>log4j</artifactId>
 		<version>1.2.17</version>
-	</dependency>        
+	</dependency>
+	<dependency>
+		<groupId>org.slf4j</groupId>
+		<artifactId>slf4j-simple</artifactId>
+		<version>1.7.6</version>
+	</dependency>
+	<dependency>
+	  <groupId>com.jcabi</groupId>
+	  <artifactId>jcabi-manifests</artifactId>
+	  <version>0.8</version>
+	</dependency>
   </dependencies>
 </project>

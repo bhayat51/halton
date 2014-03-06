@@ -11,16 +11,16 @@ import uk.co.haltonenergy.backend.db.model.Appliance;
  */
 public class ApplianceServlet extends JsonServlet<Appliance> {
     public ApplianceServlet(BackendServer srv) {
-        super(srv, "/appliances/*");
+        super(srv, "/appliances/*", 1);
     }
 
     @Override
     public Appliance loadDataObject(HttpServletRequest req) throws Exception {
         String[] args = getURIArguments(req);
-        if (args.length != 1) {
-            throw new IllegalArgumentException();
-        } else {
+        try {
             return getServer().getDataSource().queryAppliance(args[0]);
+        } catch (IndexOutOfBoundsException e) {
+            throw new IllegalArgumentException("Invalid argument count: expected 1, got " + args.length);
         }
     }
 }
