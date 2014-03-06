@@ -1,0 +1,4 @@
+washing_machine	Washing Machine	"There are two washing machines available. They are used to wash laundry, such as clothing and sheets. It uses alternative cleaning fluids for washing. Any washing machine would approximately take around 30-45 minutes for the completion of one cycle."	Miele PW 6065	2.1 cu. ft.	137.2kWh	NULL	NULL	NULL
+microwave	Microwave	At Lancaster Cohousing the residents have a microwave in their own homes as well one in the communal area. These Kenwood microwaves machines are very energy saving and economical.	Kenwood	Standard	NULL	NULL	NULL	NULL
+electric_car	Nissan Car Charger	The residents share one car charger to power their electric Nissan Leaf cars located near the entrance of the cohousing estate.	Nissan Leaf	4 Door	About 3200kWh (90 miles per charge and 12000 miles per annum)	NULL	NULL	NULL
+kettle	Kettle	There are kettles in the kitchens as well as one in the communal area used to boil water.	NULL	Standard	NULL	NULL	NULL	NULL

@@ -1,0 +1,5 @@
+electric_car	Full charge	A complete charge of the car's battery from empty to full.	24kWh per full charge
+kettle	1 litre of water	Boiling a litre's worth of water.	0.11kWh per use
+microwave	Full power heating	Cooking food at full power.	1.39kWh
+microwave	Defrosting	Unfreezing frozen food.	0.5kWh
+washing_machine	Standard load	NULL	0.35kWh
