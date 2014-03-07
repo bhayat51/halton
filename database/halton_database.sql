@@ -19,7 +19,7 @@ CREATE TABLE statistic (
 CREATE TABLE appliance (
     appliance_id VARCHAR(255) NOT NULL,
     name VARCHAR(100) NOT NULL,
-    description VARCHAR(256),
+    description VARCHAR(256) NOT NULL,
     model VARCHAR(100),
     size VARCHAR(40),
     annualconsumption VARCHAR(150),
@@ -31,9 +31,9 @@ CREATE TABLE appliance (
 
 CREATE TABLE uses (
     use_id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-    appliance_id VARCHAR(255) NOT NULL,
-    name VARCHAR(100),
-    description VARCHAR(256),
+    appliance_id VARCHAR(255),
+    name VARCHAR(100) NOT NULL,
+    description VARCHAR(256) NOT NULL,
     used INTEGER UNSIGNED NOT NULL,
     PRIMARY KEY(use_id),
     FOREIGN KEY(appliance_id) REFERENCES appliance(appliance_id)
