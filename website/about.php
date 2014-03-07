@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <title>Halton Village Energy Project - About</title>
-    <?php include('head_general.php'); ?>
+    <?php include('include/head.php'); ?>
 </head>
 <body>
-    <?php include('navbar.php'); ?>
+    <?php include('include/navbar.php'); ?>
     <div class="container main">
         <div class="row image-row">
             <div class="nopad image-col col-sm-12">
@@ -25,6 +25,9 @@
             </div>
         </div>
     </div>
-    <?php include('footer.php'); ?>
+    <?php 
+        // include('include/footer.php');
+        include('include/scripts.php');
+    ?>
 </body>
 </html>

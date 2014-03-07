@@ -12,9 +12,9 @@
                 <?php
                     function add_button($title, $url) {
                         if ($_SERVER["PHP_SELF"] === $url) {
-                            echo "<li class=\"active\"><a href=\"#\"'>" . $title . "</a></li>"; // This is the currently active page
+                            echo sprintf("<li class='active'><a href='#'>%s</a></li>\n", $title); // This is the currently active page
                         } else {
-                            echo "<li><a href=\"" . $url . "\">" . $title . "</a></li>";
+                            echo sprintf("<li><a href='%s'>%s</a></li>\n", $url, $title);
                         }
                     }
 

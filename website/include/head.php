@@ -5,6 +5,9 @@
 <!-- Bootstrap -->
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
 
+<!-- JQuery UI theme -->
+<link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css" />
+
 <!-- Custom style -->
 <link href="halton.css" rel="stylesheet">
 
