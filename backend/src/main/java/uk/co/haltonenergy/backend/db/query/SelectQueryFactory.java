@@ -25,7 +25,6 @@ public class SelectQueryFactory {
     protected <T extends SelectQuery<?>> T setupQuery(T query) {
         query.setLimit(limit);
         query.setReturnNullIfEmpty(returnNullIfEmpty);
-        query.setOrderBy(orderBy);
         return query;
     }
     
@@ -66,7 +65,7 @@ public class SelectQueryFactory {
     }
     
     public SelectQuery<Statistic> statisticsByRange() {
-        return setupQuery(new SelectQuery<Statistic>(src, "statistic", "start >= ? AND end < ?", "start") {
+        return setupQuery(new SelectQuery<Statistic>(src, "statistic", "start >= ? AND end <= ?", "start") {
             @Override
             public Statistic parseRow(ResultSet rs) throws SQLException {
                 return new Statistic(rs.getDouble("generated"), rs.getDouble("used"), rs.getDate("start"), rs.getDate("end"));

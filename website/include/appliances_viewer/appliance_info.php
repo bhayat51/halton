@@ -14,10 +14,10 @@ if (isset($args["appliance"])) {
 	$appliance = HaltonAPI::get_appliance_by_id($args["appliance"])[0];
 
 	echo "<h3>" . $appliance["name"] . "</h3>";
-	echos($appliance, "imageUrl", "<img src=\"%s\" width=\"256\" height=\"256\"></a>");
+	echos($appliance, "image_url", "<img src=\"%s\" width=\"256\" height=\"256\"></a>");
 	echo "<p>";
 	echos($appliance, "description", "%s");
-	echos($appliance, "annualConsumption", "Annual Consumption: %dkWh");
+	echos($appliance, "annual_consumption", "Annual Consumption: %dkWh");
 	echos($appliance, "model", "Model: %s");
 	echos($appliance, "size", "Size: %s");
 	echo "</p>";

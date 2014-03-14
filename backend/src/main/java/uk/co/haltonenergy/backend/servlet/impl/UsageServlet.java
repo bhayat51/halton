@@ -1,6 +1,6 @@
-package uk.co.haltonenergy.backend.servlet;
+package uk.co.haltonenergy.backend.servlet.impl;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -8,8 +8,9 @@ import uk.co.haltonenergy.backend.BackendServer;
 import uk.co.haltonenergy.backend.db.model.Usage;
 import uk.co.haltonenergy.backend.db.query.SelectQuery;
 import uk.co.haltonenergy.backend.db.query.SelectQueryFactory;
+import uk.co.haltonenergy.backend.servlet.DatabaseJsonServlet;
 
-public class UsageServlet extends JsonServlet<Set<Usage>> {
+public class UsageServlet extends DatabaseJsonServlet<List<Usage>> {
     private SelectQuery<Usage> usagesByApplianceId;
     private SelectQuery<Usage> usageByUseId;
     
@@ -18,14 +19,12 @@ public class UsageServlet extends JsonServlet<Set<Usage>> {
         
         // Generate queries
         SelectQueryFactory factory = new SelectQueryFactory(srv.getDataSource());
-        factory.setReturnNullIfEmpty(true);
-        
         usagesByApplianceId = factory.usagesByApplianceId();
         usageByUseId = factory.usageByUseId();
     }
 
     @Override
-    public Set<Usage> loadDataObject(HttpServletRequest req) throws Exception {
+    public List<Usage> loadDataObject(HttpServletRequest req) throws Exception {
         try {
             String[] args = getURIArguments(req);
             String op = args[0].toLowerCase();

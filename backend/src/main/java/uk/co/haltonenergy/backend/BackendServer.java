@@ -14,7 +14,9 @@ import org.eclipse.jetty.server.handler.RequestLogHandler;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 
+import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import uk.co.haltonenergy.backend.db.DataSource;
 import uk.co.haltonenergy.backend.servlet.BaseServlet;
@@ -67,7 +69,7 @@ public class BackendServer {
             throw new RuntimeException(e);
         }
         
-        json = new Gson();
+        json = new GsonBuilder().setDateFormat("yyyy-MM-dd").setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).create();
     }
     
     public void addServlet(BaseServlet servlet) {

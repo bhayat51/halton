@@ -25,7 +25,7 @@
                         $i = 0;
                         $appliances = HaltonAPI::get_all_appliances();
                         foreach($appliances as $appliance) {
-                            echo sprintf("<a class='list-group-item' item_key='%s'>%s</a>\n", $appliance["applianceId"], $appliance["name"]);
+                            echo sprintf("<a class='list-group-item' item_key='%s'>%s</a>\n", $appliance["appliance_id"], $appliance["name"]);
                             $i++;
                         }
                     ?>

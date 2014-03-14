@@ -6,9 +6,10 @@ import org.apache.commons.configuration.ConfigurationException;
 
 import com.jcabi.manifests.Manifests;
 
-import uk.co.haltonenergy.backend.servlet.ApplianceServlet;
-import uk.co.haltonenergy.backend.servlet.StatisticServlet;
-import uk.co.haltonenergy.backend.servlet.UsageServlet;
+import uk.co.haltonenergy.backend.servlet.impl.ApplianceServlet;
+import uk.co.haltonenergy.backend.servlet.impl.GChartStatisticServlet;
+import uk.co.haltonenergy.backend.servlet.impl.RawStatisticServlet;
+import uk.co.haltonenergy.backend.servlet.impl.UsageServlet;
 import uk.co.haltonenergy.backend.util.ShutdownLogger;
 
 public class Program {
@@ -25,8 +26,9 @@ public class Program {
         try {
             BackendServer srv = new BackendServer(port);
             srv.addServlet(new ApplianceServlet(srv));
-            srv.addServlet(new StatisticServlet(srv));
+            srv.addServlet(new RawStatisticServlet(srv));
             srv.addServlet(new UsageServlet(srv));
+            srv.addServlet(new GChartStatisticServlet(srv));
             srv.start();
         } catch (IOException e) {
             Log.error("Unable to access filesystem", e);

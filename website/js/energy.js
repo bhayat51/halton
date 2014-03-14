@@ -9,32 +9,54 @@ var options = {
 };
 
 var dt = new Date();
+dt.setMonth(0);
+dt.setDate(1);
 $("#start_date").datepicker(options).datepicker("setDate", dt);
 
-dt.setDate(dt.getDate() + 1);
+dt.setFullYear(dt.getFullYear() + 1);
 $("#end_date").datepicker(options).datepicker("setDate", dt);
 
 // Setup initial chart state
 google.load("visualization", "1", {packages:["corechart"]});
 
-$("#view_btn").click(function(event) {
-    displayChart();
-});
-
-function displayChart() {
-    // TODO Finish this
-    $.get(api_hostname + getStartDate() + "/" + getEndDate(), function(jsonString) {
-        alert("Json: " + jsonString);
-        var data = new google.visualization.DataTable();
-        var chart = new google.visualization.PieChart(document.getElementById("chart"));
-        chart.draw(data, {width: 400, height: 200});
+jQuery(function($) {
+    $("#view_btn").click(function(event) {
+        onViewClicked();
     });
-}
 
-function getStartDate() {
-    return $("start_date").datepicker("getDate");
-}
+    function onViewClicked() {
+        if (getStartDate() >= getEndDate()) {
+            $("#start_date").effect("highlight", {}, 500);
+        } else {
+            updateChart();
+        }
+    }
 
-function getEndDate() {
-    return $("end_date").datepicker("getDate");
-}
+    function updateChart() {
+        // API requires dates in yy-mm-dd format for reasons
+        var start = $.datepicker.formatDate("yy-mm-dd", getStartDate());
+        var end = $.datepicker.formatDate("yy-mm-dd", getEndDate());
+
+        $.ajax({
+                type: "GET",
+                url: api_hostname + "statistics/gchart/" + start + "/" + end,
+                dataType: "text",
+                success: function(data) {
+                    var data = new google.visualization.DataTable(eval("(" + data + ")")); /* TODO Remove nasty eval */
+                    var chart = new google.visualization.BarChart(document.getElementById("chart"));
+
+                    chart.draw(data, {title: "Energy use: " + $.datepicker.formatDate("dd-mm-yy", getStartDate()) + " to " + $.datepicker.formatDate("dd-mm-yy", getEndDate())});
+                    $("#chart").hide();
+                    $("#chart").fadeIn();
+                }
+            })
+    }
+
+    function getStartDate() {
+        return $("#start_date").datepicker("getDate");
+    }
+
+    function getEndDate() {
+        return $("#end_date").datepicker("getDate");
+    }
+});

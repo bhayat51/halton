@@ -18,7 +18,6 @@
             </div>
         </div>
         <div class="row">
-            <!-- HOW DO I HTML -->
             <div class="col-sm-4">
                 <input id="start_date" type="text" class="form-control" placeholder="dd/mm/yyyy" />
             </div>
@@ -29,7 +28,7 @@
                 <button id="view_btn" type="button" class="btn btn-default btn-sm">View statistics</button>
             </div>
         </div>
-        <div class="row">
+        <div class="row" style="padding-bottom: 10px">
             <div id="chart" />
         </div>
     </div>

@@ -2,7 +2,7 @@ package uk.co.haltonenergy.backend.db.query;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Set;
+import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -18,12 +18,12 @@ public abstract class Query<Result> {
         this.src = src;
     }
     
-    protected abstract Set<Result> doAsync(Connection conn, Object... args) throws SQLException;
+    protected abstract List<Result> doAsync(Connection conn, Object... args) throws SQLException;
     
-    public Future<Set<Result>> executeAsync(final Object... args) throws SQLException {
-        return src.runTask(new Callable<Set<Result>>() {
+    public Future<List<Result>> executeAsync(final Object... args) throws SQLException {
+        return src.runTask(new Callable<List<Result>>() {
             @Override
-            public Set<Result> call() throws SQLException {
+            public List<Result> call() throws SQLException {
                 try (Connection conn = src.getConnection()) {
                     return doAsync(conn, args);
                 }
@@ -31,11 +31,11 @@ public abstract class Query<Result> {
         });
     }
     
-    public Set<Result> execute(Object... args) throws InterruptedException, ExecutionException, TimeoutException, SQLException {
+    public List<Result> execute(Object... args) throws InterruptedException, ExecutionException, TimeoutException, SQLException {
         return execute(getDefaultTimeout(), args);
     }
     
-    public Set<Result> execute(int timeout, Object... args) throws InterruptedException, ExecutionException, TimeoutException, SQLException {
+    public List<Result> execute(int timeout, Object... args) throws InterruptedException, ExecutionException, TimeoutException, SQLException {
         return executeAsync(args).get(timeout, TimeUnit.MILLISECONDS);
     }
     

@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 import java.util.HashSet;
 
@@ -29,7 +31,7 @@ public abstract class SelectQuery<Result> extends Query<Result> {
     public abstract Result parseRow(ResultSet rs) throws SQLException;
     
     @Override
-    protected synchronized Set<Result> doAsync(Connection conn, Object... args) throws SQLException {
+    protected synchronized List<Result> doAsync(Connection conn, Object... args) throws SQLException {
         // Build the query
         String sql = "SELECT * FROM " + table;
         if (condition != null) {
@@ -60,7 +62,7 @@ public abstract class SelectQuery<Result> extends Query<Result> {
             rs.beforeFirst(); // Not empty - revert move
         }
         
-        Set<Result> out = new HashSet<>();
+        List<Result> out = new ArrayList<>();
         while (rs.next()) {
             out.add(parseRow(rs));
         }

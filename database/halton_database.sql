@@ -38,3 +38,12 @@ CREATE TABLE uses (
     PRIMARY KEY(use_id),
     FOREIGN KEY(appliance_id) REFERENCES appliance(appliance_id)
 );
+
+# Might fail at this point if the user already exists, but that's fine
+CREATE USER 'halton'@'localhost';
+# SET PASSWORD FOR 'halton'@'localhost' = PASSWORD('my_super_secret_password'); # Optional password; must correspond with db.properties
+
+GRANT SELECT ON halton_energy.* to 'halton'@'localhost';
+# GRANT USAGE ON halton_energy.* to 'halton'@'localhost' WITH MAX_QUERIES_PER_HOUR 3000;
+
+SHOW GRANTS FOR 'halton'@'localhost';

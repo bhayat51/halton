@@ -19,8 +19,8 @@ class HaltonAPI {
 		return json_decode(file_get_contents(self::$api_hostname . "usages/all/" . $applianceId), true);
 	}
 
-	/*public static function read_statistics($start, $end) {
-		return json_decode(file_get_contents(self::$api_hostname . "statistics/" . $start . "/" . $end))
-	}*/
+	public static function get_statistics($start, $end) {
+		return json_decode(file_get_contents(self::$api_hostname . "statistics/" . $start . "/" . $end), true);
+	}
 }
 ?>

@@ -16,11 +16,11 @@ import uk.co.haltonenergy.backend.BackendServer;
 import uk.co.haltonenergy.backend.Log;
 
 /**
- * Base class for a servlet that retrieves and serves database objects as JSON.
+ * Base class for a servlet that retrieves and serves database objects.
  * @author Joshua Prendergast
  */
-public abstract class JsonServlet<T> extends BaseServlet {
-    public JsonServlet(BackendServer srv, String pathSpec, int stemLength) {
+public abstract class DatabaseServlet<T> extends BaseServlet {
+    public DatabaseServlet(BackendServer srv, String pathSpec, int stemLength) {
         super(srv, pathSpec, stemLength);
     }
     
@@ -35,20 +35,24 @@ public abstract class JsonServlet<T> extends BaseServlet {
     
     public void handleRequest(HttpServletRequest req, HttpServletResponse resp) throws Exception {
         Log.debug("Request args: " + Arrays.toString(getURIArguments(req)));
+        
+        resp.addHeader("Access-Control-Allow-Origin", "*"); // Allow JavaScript to access this response
         try {
             T dataObject = loadDataObject(req);
             if (dataObject != null) {
-                String json = getServer().getJsonParser().toJson(dataObject);
-                Log.debug("Sending " + json);
+                String out = parseObject(dataObject);
+                Log.debug("Sending " + out);
                 
-                resp.setContentType("application/json");
+                resp.setContentType(getContentType());
+                resp.setContentLength(out.length());
                 resp.setCharacterEncoding("UTF-8");
                 resp.setStatus(HttpServletResponse.SC_OK);
+                
                 try (OutputStreamWriter writer = new OutputStreamWriter(resp.getOutputStream(), Charsets.UTF_8)) {
-                    writer.write(json);
+                    writer.write(out);
                 }
             } else {
-                resp.sendError(HttpServletResponse.SC_NOT_FOUND, "No such object");
+                resp.sendError(HttpServletResponse.SC_NOT_FOUND, "Empty result");
             }
         } catch (TimeoutException e) {
             resp.sendError(HttpServletResponse.SC_GATEWAY_TIMEOUT, "Database timeout");
@@ -59,6 +63,14 @@ public abstract class JsonServlet<T> extends BaseServlet {
             resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Something went horribly wrong");
             throw e;
         }
+    }
+    
+    protected String parseObject(T object) {
+        return object.toString();
+    }
+    
+    protected String getContentType() {
+        return "application/text";
     }
     
     /**
