@@ -1,7 +1,7 @@
 <?php
 
 class HaltonAPI {
-	private static $api_hostname = "http://localhost:30000/api/";
+	private static $api_hostname = "http://haltonenergy.co.uk:30000/api/";
 
 	public static function get_appliance_by_id($applianceId) {
 		return json_decode(file_get_contents(self::$api_hostname . "appliances/" . $applianceId), true);

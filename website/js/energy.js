@@ -1,5 +1,5 @@
 
-var api_hostname = "http://localhost:30000/api/";
+var api_hostname = "http://haltonenergy.co.uk:30000/api/";
 
 // Setup date pickers
 var options = {
@@ -20,6 +20,8 @@ $("#end_date").datepicker(options).datepicker("setDate", dt);
 google.load("visualization", "1", {packages:["corechart"]});
 
 jQuery(function($) {
+    onViewClicked();
+
     $("#view_btn").click(function(event) {
         onViewClicked();
     });
