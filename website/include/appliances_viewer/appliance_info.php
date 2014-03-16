@@ -10,6 +10,7 @@ function echos($json, $key, $format) {
 	}
 }
 
+echo "<h4>Info</h4>";
 if (isset($args["appliance"])) {
 	$appliance = HaltonAPI::get_appliance_by_id($args["appliance"])[0];
 

@@ -5,3 +5,6 @@
 
 <!-- Bootstrap -->
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+<!-- Link bar -->
+<script src="js/links.js"></script>

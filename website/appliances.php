@@ -6,7 +6,7 @@
 </head>
 <body>
     <?php include('include/navbar.php'); ?>
-    <div class="container main">
+    <div class="container box">
         <div class="row">
             <div class="col-sm-12">
                 <h2>Appliances</h2>
@@ -18,6 +18,7 @@
         </div>
         <div class="row">
             <div class="col-sm-3">
+                <h4>Appliance</h4>
                 <ul class="list-group" id="appliance-list">
                     <?php
                         include_once('include/halton_api.php');

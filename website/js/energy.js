@@ -20,8 +20,6 @@ $("#end_date").datepicker(options).datepicker("setDate", dt);
 google.load("visualization", "1", {packages:["corechart"]});
 
 jQuery(function($) {
-    onViewClicked();
-
     $("#view_btn").click(function(event) {
         onViewClicked();
     });
@@ -45,11 +43,14 @@ jQuery(function($) {
                 dataType: "text",
                 success: function(data) {
                     var data = new google.visualization.DataTable(eval("(" + data + ")")); /* TODO Remove nasty eval */
-                    var chart = new google.visualization.BarChart(document.getElementById("chart"));
-
-                    chart.draw(data, {title: "Energy use: " + $.datepicker.formatDate("dd-mm-yy", getStartDate()) + " to " + $.datepicker.formatDate("dd-mm-yy", getEndDate())});
-                    $("#chart").hide();
-                    $("#chart").fadeIn();
+                    var chart = new google.visualization.BarChart(document.getElementById("energy-chart"));
+                    var options = {
+                        title: "Energy use: " + $.datepicker.formatDate("dd-mm-yy", getStartDate()) + " to " + $.datepicker.formatDate("dd-mm-yy", getEndDate()),
+                        "backgroundColor": { fill: "none" }
+                    };
+                    chart.draw(data, options);
+                    $("#energy-chart").hide();
+                    $("#energy-chart").fadeIn();
                 }
             })
     }

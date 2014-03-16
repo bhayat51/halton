@@ -18,7 +18,7 @@ jQuery(function($) {
 
         // Toggle active state
         $('#appliance-list > .list-group-item').removeClass("active");
-        $(this).addClass("active");
+        $('.list-group-item[item_key = "' + applianceId + '"').addClass("active");
 
         $("#usages").load("/include/appliances_viewer/usages.php?" + applianceId, function() { // Load possible usages for this appliance
             $('#usages-list > .list-group-item').click(function() { // On completion, set usage list click event

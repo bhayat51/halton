@@ -1,11 +1,8 @@
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<div class="navbar" role="navigation">
     <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Halton Village Energy Project</a>
+            <img src="img/logo.png" width="64" height="64">
+            <h6 class="nomarg">Halton Energy Project</h6>
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
@@ -22,7 +19,6 @@
                     add_button("Energy", "/energy.php");
                     add_button("Appliances", "/appliances.php");
                 ?>
-                <li><a href="http://haltonvillageproject.wordpress.com/the-team/">Contact</a></li>
             </ul>
         </div>
     </div>

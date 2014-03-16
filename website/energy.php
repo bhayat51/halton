@@ -7,7 +7,7 @@
 </head>
 <body>
     <?php include('include/navbar.php'); ?>
-    <div class="container main">
+    <div class="container box">
         <div class="row">
             <div class="col-sm-12">
                 <h2>Energy</h2>
@@ -29,7 +29,7 @@
             </div>
         </div>
         <div class="row" style="padding-bottom: 10px">
-            <div id="chart" />
+            <div id="energy-chart" />
         </div>
     </div>
     <?php 

@@ -1,76 +1,88 @@
+@import url(http://fonts.googleapis.com/css?family=Exo+2);
 
 /* Navigation */
 .navbar {
-	background-color: #222;
-	border-color: #1D5FA3;
-	border: 0 0 20px 0;
+	height: 50px !important;
+	background: #CC4F37;
+	border-color: #CC4F37;
 	margin: 0 auto;
+	border-radius: 0;
+	border: 0;
+	box-shadow: 0 2px 7px #555;
+}
+.navbar-header {
+	background: #bb3e26;
 	border-radius: 3px;
+	padding: 5px;
+	text-align: center;
+	color: white;
 }
 .navbar a {
-	color: white !important;
+	color: #fff !important;
 }
 .navbar .navbar-nav .active a {
-	background-color: #173154;
+	background-color: #991400;
 }
 .navbar .navbar-nav .active a:hover {
-	background-color: #173154 !important;
+	background-color: #991400 !important;
 }
 .navbar .navbar-nav a {
-	background-color: #21477A;
+	background-color: #730F00;
 }
 .navbar .navbar-nav a:hover {
-	background-color: #173154 !important;
+	background-color: #991400 !important;
 }
 .navbar-collapse {
 	border: 0;
 }
+html {
+	background: url("img/pixel_weave.png");
+	height: 100%;
+}
+.dark-bg {
+	background: rgba(20, 20, 20, 0.095);
+}
 
+#carousel-1 {
+	margin-bottom: 10px;
+}
+.carousel-control.left, .carousel-control.right {
+	background: none;
+}
+
+#energy-chart {
+	height: 500px;
+}
+
+.wrapper {
+	padding: 50px 0;
+}
 .nopad {
 	padding: 0;
 }
-.panel {
-	border: 0;
+.nomarg {
+	margin: 0;
+}
+.carousel-inner .item img {
+	margin: 0 auto;
 }
 
-html {
-	background: url('img/bg.png');
-	background: linear-gradient(rgba(10, 10, 20, 0.5), rgba(10, 10, 20, 0.65)), url('img/bg.png'); /* Subtle blue gradient FIXME looks odd when scrolling down */
-	height: 100%; /* Hack to make the background fit the entire page. Looks bad when scrolling. */
-}
 body {
 	background-color: transparent;
-	margin-top: 75px; /* Top margin */
+	margin-top: 20px; /* Top margin */
 }
 p {
 	text-align: justify;
 }
-.main {
-	background: white;
-	border-radius: 3px;
-}
-.content {
-}
-.image-row {
-	text-align: center;
-}
-.image-row img {
+h1, h2, h3, h4, h5, h6 {
 	width: 100%;
+	font-family: 'Exo 2', Arial, Verdana;
 }
 .links {
-	margin-top: 25px;
 	text-align: center;
-	padding: 10px;
-	background: white;
 }
 .links ul {
 	list-style: none;
-	padding: 0;
-	margin: 0;
+	padding: 7.5px 0;
 	display: inline-block;
-}
-.links ul li {
-	margin: 0 auto;
-	display: table-cell;
-	width: 100px;
 }
